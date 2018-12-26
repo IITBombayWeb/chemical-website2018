@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - course_allotment
+id: course_allotment
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - CSV
+migration_group: chem
+label: 'Course Allotment content migration'
+source:
+  plugin: csv
+  path: /var/www/migrationdata/csv/course_allotmentnew.csv
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - id
+process:
+  type:
+    plugin: default_value
+    default_value: course_allotment
+  title: title
+  body/value: body
+  body/format:
+    plugin: default_value
+    default_value: basic_html
+  field_acad_year/value: financial_year
+  field_acad_year/format:
+    plugin: default_value
+    default_value: basic_html
+  field_semester: semester
+  field_course_code_ref:
+    -
+      plugin: entity_lookup
+      entity_type: node
+      bundle: course_details
+      source: course_name
+  field_course_slot/value:  course_slot
+  field_course_slot/format:
+    -
+     plugin: default_value
+     default_value: basic_html
+  field_course_url/value: course_url
+  field_course_url/format:
+    -
+     plugin: default_value
+     default_value: basic_html
+  field_facultynode:
+    -
+      plugin: entity_lookup
+      entity_type: node
+      bundle: fac_page
+      source: instructor(s) 
+  #field_student_noderef: 
+    #-
+      #plugin: entity_lookup
+      #entity_type: node
+      #bundle: 
+      #source: student_ta   
+  field_staff_noderef: 
+    -
+      plugin: entity_lookup
+      entity_type: node
+      bundle: staff_page
+      source: staff_associated 
+destination:
+  plugin: 'entity:node'
+  bundle: course_allotment
+migration_dependencies:
+  required: {  }
+  optional: {  }
