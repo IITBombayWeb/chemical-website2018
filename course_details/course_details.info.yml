@@ -1,0 +1,7 @@
+name: Course Details
+type: module
+description: CHE Course Details
+core: 8.x
+package: Custom
+dependencies:
+  - migrate_tools
