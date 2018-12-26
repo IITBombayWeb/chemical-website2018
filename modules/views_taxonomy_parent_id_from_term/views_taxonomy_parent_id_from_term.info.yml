@@ -1,0 +1,12 @@
+name: Views Taxonomy Parent ID from Term
+description: Adds a contextual filter that returns the parent id of a term.
+package: Views
+type: module
+# version: 1.0
+# core: 8.x
+
+# Information added by Drupal.org packaging script on 2017-11-06
+version: '8.x-1.1'
+core: '8.x'
+project: 'views_taxonomy_parent_id_from_term'
+datestamp: 1509968587

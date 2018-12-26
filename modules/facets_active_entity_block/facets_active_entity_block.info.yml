@@ -1,0 +1,16 @@
+name: 'Facets Active Entity Block'
+description: 'Creates blocks which render entities related to selected facets.'
+package: Search
+type: module
+# core: 8.x
+
+dependencies:
+  - facets
+  - entity_reference
+  - block
+
+# Information added by Drupal.org packaging script on 2017-04-15
+version: '8.x-1.0-beta1'
+core: '8.x'
+project: 'facets_active_entity_block'
+datestamp: 1492216449

@@ -1,0 +1,12 @@
+name: 'Views List Sort'
+description: 'Allows views to be sorted by allowed values of a list field.'
+type: module
+# core: 8.x
+dependencies:
+  - views
+
+# Information added by Drupal.org packaging script on 2016-11-28
+version: '8.x-1.1'
+core: '8.x'
+project: 'views_list_sort'
+datestamp: 1480347487
