@@ -1,0 +1,7 @@
+name: CHE Meeting Minutes
+type: module
+description: CHE Meeting Minutes List
+core: 8.x
+package: Custom
+dependencies:
+  - migrate_tools

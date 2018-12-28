@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - che_meetingfiles
+id: meeting_minutes
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - CSV
+migration_group: chem
+label: 'Meeting Minutes content migration'
+source:
+  plugin: csv
+  path: /var/www/migrationdata/csv/meeting_minutes.csv
+  delimiter: ','
+  enclosure: '"'
+  header_row_count: 1
+  keys:
+    - id
+  constants:
+    file_source: /var/www/migrationdata/mmfiles
+    file_dest: 'public://meeting_files/'
+process:
+  type:
+    plugin: default_value
+    default_value: meeting_minutes
+  source_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/file_source
+        - file_name
+  title: title
+  field_name_of_the_committee: name_of_the_committee
+  field_date_of_meeting: date_of_meeting
+  field_file_attachment_new:
+    plugin: file_import
+    source: '@source_path'
+    destination: constants/file_dest
+destination:
+  plugin: 'entity:node'
+  default_bundle: meeting_minutes
+migration_dependencies: null
